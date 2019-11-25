@@ -1,0 +1,12 @@
+<section class="add-edit-product">
+<form>
+    <input type="text" [(ngModel)]="product && product.name" name="name" placeholder="Nazwa produktu">
+    <textarea [(ngModel)]="product && product.description" name="description" placeholder="Opis produktu"></textarea>
+    <input type="number" [(ngModel)] ="product && product.price" name="price" placeholder="Cena">
+
+  </form>
+  <div class="image-drop" (drop)="dropped($event)" (dragover)="dragover($event)"></div>
+  <img [src]="product.imageURL" />
+  <input type="submit" value="Add product" (click)="commitAdd($event)">
+  <input type="submit" value="Anuluj" (click)="abandonAdd($event)">
+</section>

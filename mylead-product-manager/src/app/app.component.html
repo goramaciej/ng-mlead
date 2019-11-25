@@ -1,14 +1,23 @@
-<form>
-  <input type="text" [(ngModel)]="name" name="name" placeholder="Produkt1">
-  <textarea [(ngModel)]="description" name="description" placeholder="opis produktu"></textarea>
-  <input type="submit" value="Add product" (click)="addProduct()">
-</form>
+<app-create-edit-product *ngIf="newEditProduct"
+                [product]="newEditProduct"
+                (commit)="addCommited($event)"
+                (abandon)="addAbandoned($event)"
+                ></app-create-edit-product>
 
+<button (click)="addNewProduct()">AddProduct</button>
 
-<ul *ngFor="let product of products | async">
-  <li>
-    <strong>{{ product.name }}</strong>
+<ul *ngFor="let product of (products | async)">
+  <li class="col-sm-6 col-md-4 col-lg-3" (click)="getProduct(product.id)">
+    <strong>{{ product.productData.name }} </strong>
     <br>
-    {{ product.description }}
+    {{ product.productData.description }}
+    <br>
+    <button (click)="deleteProduct(product.id)">deleteProduct</button>
+    <button (click)="editProduct(product.id)">edit product</button>
   </li>
+  <!-- <strong> {{ checkMe(product.productData) }}</strong> -->
 </ul>
+
+<h1>Selected product: </h1>
+<h3> {{ (selectedProduct | async)?.name }}</h3>
+<p> {{ (selectedProduct | async)?.description }}</p>
