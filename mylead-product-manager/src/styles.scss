@@ -1,6 +1,46 @@
+$sec-color: #ffa45c;
+
 body {
     background: #222427;
     padding: 2em;
     color:#fff;
-    font-family: 'Arial';
+    display: block;
+    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 576px) {
+  .reset-padding {
+      padding-right: 0px;
+      padding-left: 0px;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 30px;
+  box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
+  &:hover{
+    outline: none;
+  }
+  &.btn-primary{
+    background: $sec-color;
+    border: 1px solid $sec-color;
+    color: #fff;
+    &:hover{
+      background: transparent;
+      color: $sec-color;
+    }
+    &.btn-outline-primary{
+      border: 1px solid $sec-color;
+      background: transparent;
+      color: $sec-color;
+      &:hover{
+        border: 1px solid transparent;
+        background: $sec-color;
+        color: #fff;
+      }
+    }
+  }
 }

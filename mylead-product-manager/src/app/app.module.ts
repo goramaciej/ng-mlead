@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { CreateEditProductComponent } from './create-edit-product/create-edit-product.component';
+import { CreateEditProductComponent } from './products/create-edit-product/create-edit-product.component';
+import { ProductsContainerComponent } from './products/products-container/products-container.component';
+import { ProductItemComponent } from './products/product-item/product-item.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJWN3DywIZ1H9b9oNpar_oHeUiqqw28-4',
@@ -23,7 +25,9 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    CreateEditProductComponent
+    CreateEditProductComponent,
+    ProductsContainerComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,

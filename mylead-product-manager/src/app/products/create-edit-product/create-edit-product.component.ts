@@ -1,8 +1,8 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { tap, map } from 'rxjs/operators';
-import { Product } from './../products/shared/product.model';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Observable } from 'rxjs/Observable';
+// import { tap, map } from 'rxjs/operators';
+import { Product } from '../shared/product.model';
 
 
 import {

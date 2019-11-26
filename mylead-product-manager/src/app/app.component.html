@@ -1,23 +1,33 @@
-<app-create-edit-product *ngIf="newEditProduct"
-                [product]="newEditProduct"
-                (commit)="addCommited($event)"
-                (abandon)="addAbandoned($event)"
-                ></app-create-edit-product>
+  <section class="container reset-padding">
+    <div class="row">
+      <app-product-item
+        *ngFor="let product of products | async"
+        class="col-sm-6 col-md-4 col-lg-3 p-0"
+        [product]="product"></app-product-item>
+    </div>
+  </section>
 
 <button (click)="addNewProduct()">AddProduct</button>
 
-<ul *ngFor="let product of (products | async)">
+<app-create-edit-product
+  *ngIf="newEditProduct"
+  [product]="newEditProduct"
+  (commit)="addCommited($event)"
+  (abandon)="addAbandoned($event)"
+></app-create-edit-product>
+
+<ul *ngFor="let product of products | async">
   <li class="col-sm-6 col-md-4 col-lg-3" (click)="getProduct(product.id)">
     <strong>{{ product.productData.name }} </strong>
-    <br>
+    <br />
     {{ product.productData.description }}
-    <br>
+    <br />
     <button (click)="deleteProduct(product.id)">deleteProduct</button>
     <button (click)="editProduct(product.id)">edit product</button>
   </li>
   <!-- <strong> {{ checkMe(product.productData) }}</strong> -->
 </ul>
 
-<h1>Selected product: </h1>
-<h3> {{ (selectedProduct | async)?.name }}</h3>
-<p> {{ (selectedProduct | async)?.description }}</p>
+<h1>Selected product:</h1>
+<h3>{{ (selectedProduct | async)?.name }}</h3>
+<p>{{ (selectedProduct | async)?.description }}</p>
