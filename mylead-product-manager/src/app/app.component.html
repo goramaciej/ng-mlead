@@ -1,5 +1,11 @@
+<app-navbar [filterObject]="filterObject"></app-navbar>
+
 <button (click)="addNewProduct()">AddProduct</button>
 <button (click)="filterMe()">FilterMe</button>
+<button (click)="showFilter()">ShowFilter</button>
+
+<button (click)="setObservable()">setObservable</button>
+
   <section class="container reset-padding">
     <div class="row">
       <app-product-item
@@ -15,7 +21,6 @@
   </section>
 
 <app-create-edit-product
-  class="fixed-top"
   *ngIf="newEditProduct"
   [product]="newEditProduct"
   (commit)="addCommited($event)"

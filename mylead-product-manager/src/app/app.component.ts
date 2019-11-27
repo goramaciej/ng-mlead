@@ -11,6 +11,8 @@ import 'rxjs/add/operator/map';
 import { take } from 'rxjs/operators';
 
 import { Product } from './products/shared/product.model';
+import { FilterModel } from './products/shared/filter.model';
+import { FilterService } from './services/filter.service';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,9 @@ export class AppComponent {
   selectedProduct: Observable<Product>;
   newEditProduct: Product = null;
 
-  constructor(private fireStore: AngularFirestore) {}
+  filterObject: FilterModel = new FilterModel();
+
+  constructor(private fireStore: AngularFirestore, private filter: FilterService) {}
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.productsCollection = this.fireStore.collection('products');
@@ -41,14 +45,21 @@ export class AppComponent {
     this.showData();
   }
 
-  showData() {
-    let mapped = this.products.map( actions => {
-      console.log(actions);
-      return actions;
-    });
+  showFilter(){
+    const newFilter = new FilterModel();
+    newFilter.filterString = 'mielonka';
+    this.filter.setFilter(newFilter);
   }
 
-  processData(filter: string = null, sortType: string = 'name') {
+  showData() {
+    console.log('showData');
+    // let mapped = this.products.map( actions => {
+    //   console.log(actions);
+    //   return actions;
+    // });
+  }
+
+  processData(sortType: string = 'name') {
     this.products = this.productsCollection.snapshotChanges().map( actions => {
       let mappedArr =  actions.map( item => {
         /*console.table(item.payload.doc.data());
@@ -57,8 +68,8 @@ export class AppComponent {
         const id = item.payload.doc.id;
         return { id, productData };
       });
-      if (filter) {
-        const filteredArr = mappedArr.filter( item => item.productData.name.includes(filter) );
+      if (this.filterObject.filterString.length > 0) {
+        const filteredArr = mappedArr.filter( item => item.productData.name.toLocaleLowerCase().includes(this.filterObject.filterString.toLowerCase()) );
         mappedArr = filteredArr;
       }
       return this.sortArray(mappedArr, sortType);
@@ -97,6 +108,7 @@ export class AppComponent {
     this.newEditProduct = new Product();
     this.newEditProduct.initialize();
     this.newEditProduct.id = Math.floor(Math.random() * 10000000);
+    this.blockScroll();
   }
   addCommited(ev) {
     console.log('addCommited');
@@ -132,7 +144,7 @@ export class AppComponent {
     // document.getElementById('dialog').classList.remove('show');
   }
   filterMe() {
-    this.processData(null, 'price');
+    this.processData();
   }
 
 }

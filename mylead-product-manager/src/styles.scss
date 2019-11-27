@@ -1,5 +1,9 @@
 $sec-color: #ffa45c;
 
+html {
+  box-sizing: border-box;
+}
+
 body {
     background: #ffffff;
     padding: 2em;
@@ -10,12 +14,11 @@ body {
   margin: 0;
 }
 
-@media (max-width: 576px) {
+
   .reset-padding {
       padding-right: 0px;
       padding-left: 0px;
   }
-}
 
 .btn {
   cursor: pointer;
