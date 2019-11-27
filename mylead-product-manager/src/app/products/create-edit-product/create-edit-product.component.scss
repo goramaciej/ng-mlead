@@ -1,30 +1,51 @@
 .add-edit-product{
   box-sizing: border-box;
   position: relative;
-  background: white;
-  width: 100vw;
-  //height: 100%;
-  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.88);
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
   left: 0;
   top: 0;
+
+  p {
+    font-size: 13px;
+    margin: 0 0 10px;
+    font-weight: 600;
+    span {
+      font-weight: 300;
+    }
+  }
 }
 input, textarea {
   display:block;
   width: 100%;
-  margin-bottom:15px;
+  margin-bottom:25px;
   font-size: 15px;
-  padding:10px;
+  padding: 5px 10px;
   background:none;
   border-bottom: 1px solid #414a59 !important;
   border:0;
   //color:#fff;
 }
-textarea { resize: none; }
+textarea {
+  resize: none;
+  height: 80px;
+}
 
-.image-drop{
-  background: pink;
-  width: 100px;
-  height: 100px;
+.image-drop {
+  background: #ffa45c;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  border: 1px dotted black;
+  img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
+  }
 }
 
 input[type='submit'] {
@@ -34,4 +55,26 @@ input[type='submit'] {
   font-weight:bold;
   margin-bottom:50px;
   padding:20px;
+}
+
+
+.admin-buttons{
+  display:flex;
+
+  .admin-button{
+    background-color: #fc3a5a;
+    border: 1px solid #fc3a5a;
+    color: white;
+    width: 50%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover{
+      color: #fc3a5a;
+      background-color: white;
+    }
+  }
 }

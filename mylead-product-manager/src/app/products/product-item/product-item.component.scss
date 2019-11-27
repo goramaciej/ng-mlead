@@ -1,10 +1,9 @@
 .product {
     display: block;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     position: relative;
     transition: all 0.3s ease;
-
     @media (min-width: 576px){
       // margin: 0 0.5rem 2rem;
     }
@@ -31,7 +30,7 @@
         transition: transform 0.4s ease;
         max-width: 100%;
         height: auto;
-        min-height: 300px;
+        min-height: 350px;
       }
   }
   .text{
@@ -39,6 +38,13 @@
     position: relative;
     color: #000000;
     width: 100%;
+    .text-inner{
+      padding: 0 1rem;
+      @media (min-width: 576px){
+        padding: 0 0.5rem;
+      }
+    }
+
     h3 {
       font-size: 14px;
       margin-bottom: 5px;
@@ -49,7 +55,10 @@
     p.price{
       margin-bottom: 0;
       color: #000000;
-      font-weight: 400;
+      font-weight: 300;
+      span{
+        font-weight: 600;
+      }
     }
     .bottom-area {
       position: absolute;
@@ -67,13 +76,18 @@
       @media (min-width: 992px){
         opacity: 0;
       }
-      a {
+      .bottom-button {
         color: #ffffff;
         width: 100%;
         max-width: 200px;
         background-color: #000000;
         transition: all 0.3s ease;
         border: 1px solid #000000;
+        margin: 0 0.5rem;
+        @media (min-width: 576px){
+          margin: 0 0.25rem;
+        }
+        cursor: pointer;
         &:hover{
           background-color: #ffffff;
           color: #000000;
@@ -101,5 +115,34 @@
   }
   .text .bottom-area{
     opacity: 1;
+  }
+}
+
+.admin-buttons{
+  display:flex;
+  @media (min-width: 576px){
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .admin-button{
+    background-color: #fc3a5a;
+    border: 1px solid #fc3a5a;
+    color: white;
+    width: 50%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover{
+      color: #fc3a5a;
+      background-color: white;
+    }
+    @media (min-width: 576px){
+      width: 90%;
+      margin: 0.25rem;
+    }
   }
 }
