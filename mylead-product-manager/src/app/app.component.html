@@ -4,9 +4,9 @@
 <button (click)="filterMe()">FilterMe</button>
 <button (click)="showFilter()">ShowFilter</button>
 
-<button (click)="setObservable()">setObservable</button>
+<app-product-list></app-product-list>
 
-  <section class="container reset-padding">
+<!-- <section class="container reset-padding">
     <div class="row">
       <app-product-item
         *ngFor="let product of products | async"
@@ -18,7 +18,7 @@
       >
       </app-product-item>
     </div>
-  </section>
+</section> -->
 
 <app-create-edit-product
   *ngIf="newEditProduct"
@@ -26,7 +26,3 @@
   (commit)="addCommited($event)"
   (abandon)="addAbandoned($event)"
 ></app-create-edit-product>
-
-<h1>Selected product:</h1>
-<h3>{{ (selectedProduct | async)?.name }}</h3>
-<p>{{ (selectedProduct | async)?.description }}</p>

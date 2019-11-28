@@ -5,10 +5,8 @@ export class FilterModel {
   priceMax: number;
   constructor() {
     this.filterString = '';
-    this.sortBy = 'name';
+    this.sortBy = 'name'; //price, price-desc
     this.priceMin = 0;
     this.priceMax = 1000000;
   }
 }
-
-/* filter.subscribe( next: (params: ) ) */

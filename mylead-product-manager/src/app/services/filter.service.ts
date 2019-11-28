@@ -5,11 +5,12 @@ import { FilterModel } from './../products/shared/filter.model';
 
 @Injectable()
 export class FilterService {
+  private initialFilter: FilterModel = new FilterModel();
+  private filterTracker = new BehaviorSubject<FilterModel>(this.initialFilter);
 
   constructor() { }
 
-  private initialFilter: FilterModel = new FilterModel();
-  private filterTracker = new BehaviorSubject<FilterModel>(this.initialFilter);
+
 
   /** Allows subscription to the behavior subject as an observable */
   getFilter(): Observable<FilterModel> {
@@ -23,12 +24,48 @@ export class FilterService {
    * @param val a number representing the current value
    * @param delta a number representing the positive or negative change in current value
    */
-  setFilter(filter: FilterModel): void {
+  /*setFilter(filter: FilterModel): void {
     this.filterTracker.next(filter);
+  }*/
+
+  filterProducts(products: any): any {
+    return products.filter( item => {
+      const ftValue = this.filterTracker.value;
+      if (ftValue.filterString) {
+        if(!item.productData.name.toLowerCase().includes(ftValue.filterString.toLowerCase())) {
+          return false;
+        }
+
+      }
+      if (item.productData.price > ftValue.priceMax || item.productData.price < ftValue.priceMin) {
+        return false;
+      }
+      return true;
+    });
+  }
+  filterSetFilterString(fString: string){
+    const ftValue = this.filterTracker.value;
+    ftValue.filterString = fString;
+    this.filterTracker.next(ftValue);
   }
 
-  /** Resets the count to the initial value */
-  resetCount(): void {
+  setSortingMethod(value: string){
+    const ftValue = this.filterTracker.value;
+    ftValue.sortBy = value;
+    this.filterTracker.next(ftValue);
+  }
+  setPriceMin(value){
+    const ftValue = this.filterTracker.value;
+    ftValue.priceMin = value;
+    this.filterTracker.next(ftValue);
+  }
+  setPriceMax(value){
+    const ftValue = this.filterTracker.value;
+    ftValue.priceMax = value;
+    this.filterTracker.next(ftValue);
+  }
+
+  resetFilter(): void {
     this.filterTracker.next(this.initialFilter);
   }
 }

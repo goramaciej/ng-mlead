@@ -12,6 +12,7 @@ import { ProductsContainerComponent } from './products/products-container/produc
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FilterService } from './services/filter.service';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJWN3DywIZ1H9b9oNpar_oHeUiqqw28-4',
@@ -30,7 +31,8 @@ const firebaseConfig = {
     CreateEditProductComponent,
     ProductsContainerComponent,
     ProductItemComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

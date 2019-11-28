@@ -1,14 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+
       <!-- <a class="navbar-brand" href="#">Sklep</a> -->
+  <form>
+      <!-- <label for="searchInput">Wyszukaj:</label> -->
+      <input type="text" name="searchString" id="searchInput" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
 
-      <input type="text" name="searchString" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
+      <label for="sortMethod">Sortuj według:</label>
+      <select class="form-control" id="sortMethod" (change)="onSelectChange($event.target.value)">
+          <option value="name">Nazwa</option>
+          <option value="price">Cena rosnąco</option>
+          <option value="price-desc">Cena malejąca</option>
+      </select>
 
-      <button class="navbar-toggler" type="button">
+      <!-- <button class="navbar-toggler" type="button">
         <span class="oi oi-menu"></span> Menu
-      </button>
+      </button> -->
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
+      <!-- <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
 
@@ -16,6 +24,6 @@
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
-      </div>
-    </div>
+      </div> -->
+    </form>
   </nav>

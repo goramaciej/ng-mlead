@@ -24,16 +24,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscription = this.filter.getFilter().subscribe( res => {
       console.log(res);
     });
-    // this.subscription = this.filter.getFilter().subscribe(
-    //   res => {
-    //     console.table(res);
-    //   });
-    // this.subject$.next("a to jest kania maniania");
+  }
+
+  onSelectChange(value) {
+    this.filter.setSortingMethod(value);
   }
   onSearchChange( searchValue: string) {
-    console.log(searchValue);
-    // console.log(this.filterString);
-    // this.filterObject.filterString = searchValue;
+    this.filter.filterSetFilterString(searchValue);
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
