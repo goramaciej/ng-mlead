@@ -1,24 +1,8 @@
-<app-navbar [filterObject]="filterObject"></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
 <button (click)="addNewProduct()">AddProduct</button>
-<button (click)="filterMe()">FilterMe</button>
-<button (click)="showFilter()">ShowFilter</button>
 
 <app-product-list></app-product-list>
-
-<!-- <section class="container reset-padding">
-    <div class="row">
-      <app-product-item
-        *ngFor="let product of products | async"
-        class="col-sm-6 col-md-4 col-lg-3 p-0"
-        [product]="product.productData"
-        [adminMode]="true"
-        (deleteProductEv)="deleteProductEv($event)"
-        (editProductEv)="editProductEv($event)"
-      >
-      </app-product-item>
-    </div>
-</section> -->
 
 <app-create-edit-product
   *ngIf="newEditProduct"

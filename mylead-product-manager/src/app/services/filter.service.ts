@@ -10,13 +10,10 @@ export class FilterService {
 
   constructor() { }
 
-
-
   /** Allows subscription to the behavior subject as an observable */
   getFilter(): Observable<FilterModel> {
-    let obs = this.filterTracker.asObservable();
+    const obs = this.filterTracker.asObservable();
     return obs;
-    // this.filterTracker.asObservable();
   }
 
   /**
@@ -32,10 +29,9 @@ export class FilterService {
     return products.filter( item => {
       const ftValue = this.filterTracker.value;
       if (ftValue.filterString) {
-        if(!item.productData.name.toLowerCase().includes(ftValue.filterString.toLowerCase())) {
+        if (!item.productData.name.toLowerCase().includes(ftValue.filterString.toLowerCase())) {
           return false;
         }
-
       }
       if (item.productData.price > ftValue.priceMax || item.productData.price < ftValue.priceMin) {
         return false;
@@ -43,23 +39,26 @@ export class FilterService {
       return true;
     });
   }
-  filterSetFilterString(fString: string){
+  filterSetFilterString(fString: string) {
     const ftValue = this.filterTracker.value;
     ftValue.filterString = fString;
     this.filterTracker.next(ftValue);
   }
 
-  setSortingMethod(value: string){
+  setSortingMethod(value: string) {
     const ftValue = this.filterTracker.value;
     ftValue.sortBy = value;
     this.filterTracker.next(ftValue);
   }
-  setPriceMin(value){
+  getSortingMethod():string{
+    return this.filterTracker.value.sortBy;
+  }
+  setPriceMin(value) {
     const ftValue = this.filterTracker.value;
     ftValue.priceMin = value;
     this.filterTracker.next(ftValue);
   }
-  setPriceMax(value){
+  setPriceMax(value) {
     const ftValue = this.filterTracker.value;
     ftValue.priceMax = value;
     this.filterTracker.next(ftValue);

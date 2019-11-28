@@ -26,12 +26,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSelectChange(value) {
+  onSelectChange(value: string) {
     this.filter.setSortingMethod(value);
   }
   onSearchChange( searchValue: string) {
     this.filter.filterSetFilterString(searchValue);
   }
+  onMinPrice(value: number) {
+    this.filter.setPriceMin(value);
+  }
+  onMaxPrice(value: number) {
+    this.filter.setPriceMax(value);
+  }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

@@ -12,6 +12,10 @@
           <option value="price-desc">Cena malejąca</option>
       </select>
 
+      <label for="minPrice">Zakres ceny:</label>
+      <input type="number" class="price-input" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)">
+      <input type="number" class="price-input" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)">
+
       <!-- <button class="navbar-toggler" type="button">
         <span class="oi oi-menu"></span> Menu
       </button> -->

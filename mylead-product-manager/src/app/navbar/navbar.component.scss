@@ -1,14 +1,23 @@
 .form-control{
-
-   border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 form {
   display: flex;
+  align-items: center;
+  padding: 5px;
+}
+select{
+  padding: 5px;
+  width: 120px;
 }
 input {
-  padding: .375rem .75rem;
+  padding: 5px;
 }
 label {
   color: white;
+  width: 300px;
+  margin: 0 10px 0 30px;
+}
+.price-input{
   width: 300px;
 }

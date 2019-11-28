@@ -1,8 +1,9 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 // import { tap, map } from 'rxjs/operators';
 import { Product } from '../shared/product.model';
+import { ProductAddRemoveEdit } from './../../services/product-add-remove-edit.service';
 
 
 import {
@@ -22,31 +23,31 @@ export class CreateEditProductComponent implements OnInit {
   @Input()
   product: Product;
 
-  @Output()
-  abandon: EventEmitter<boolean> = new EventEmitter<boolean>();
+  constructor(private productService: ProductAddRemoveEdit) {
 
-  @Output()
-  commit: EventEmitter<boolean> = new EventEmitter<boolean>();
+  }
+  // @Output()
+  // abandon: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  imageURL: string;
+  // @Output()
+  // commit: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  // id: number;
+  // name: string;
+  // description: string;
+  // price: number;
+  // imageURL: string;
 
   ngOnInit() {
-    //this.name = this.product.name;
-    //this.description = this.product.description;
-  }
-
-  constructor() {
-
+    this.product = this.productService.getProductValue();
   }
 
   commitAdd(event) {
-    //console.table(this.product['name']);
-    this.commit.emit(true);
-      //const newProduct = new Observable<Product>();
+    this.productService.saveEditedProduct(this.product as Product);
+
+    // console.table(this.product['name']);
+    // this.commit.emit(true);
+      // const newProduct = new Observable<Product>();
       // const per = this.productsCollection.add(newProduct)
       //   .then(() => console.log('product added'))
       //   .catch(() => console.log('problem'))
@@ -63,7 +64,8 @@ export class CreateEditProductComponent implements OnInit {
   }
 
   abandonAdd(ev){
-    this.abandon.emit(true);
+    //this.abandon.emit(true);
+    this.productService.abandonEdit();
   }
 
   dropped(ev) {

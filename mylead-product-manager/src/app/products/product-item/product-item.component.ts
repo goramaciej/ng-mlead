@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../shared/product.model';
+import { ProductAddRemoveEdit } from '../../services/product-add-remove-edit.service';
 
 @Component({
   selector: 'app-product-item',
@@ -24,15 +25,19 @@ export class ProductItemComponent {
     console.table(this.product.id);
   }
 
+  constructor(private productService: ProductAddRemoveEdit) {
+
+  }
+
   format(what: number): string {
     return what.toFixed(2).toString().replace('.', ',');
   }
 
   editProduct() {
-    this.editProductEv.emit(this.product.id);
+    this.productService.editProduct(this.product.id);
   }
 
   deleteProduct() {
-    this.deleteProductEv.emit(this.product.id);
+    this.productService.removeProduct(this.product.id);
   }
 }

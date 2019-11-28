@@ -8,11 +8,14 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { CreateEditProductComponent } from './products/create-edit-product/create-edit-product.component';
-import { ProductsContainerComponent } from './products/products-container/products-container.component';
 import { ProductItemComponent } from './products/product-item/product-item.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FilterService } from './services/filter.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
+
+// Services:
+import { FilterService } from './services/filter.service';
+import { ProductAddRemoveEdit } from './services/product-add-remove-edit.service';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAJWN3DywIZ1H9b9oNpar_oHeUiqqw28-4',
@@ -29,7 +32,6 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     CreateEditProductComponent,
-    ProductsContainerComponent,
     ProductItemComponent,
     NavbarComponent,
     ProductListComponent,
@@ -41,7 +43,10 @@ const firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [FilterService],
+  providers: [
+    FilterService,
+    ProductAddRemoveEdit
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

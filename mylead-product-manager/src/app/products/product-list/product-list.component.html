@@ -1,4 +1,7 @@
-<section class="container reset-padding">
+<div class="container reset-padding">
+    <div class="row" *ngIf="productsLength < 1">
+      <h5>Brak produktów spełniających określone kryteria</h5>
+    </div>
     <div class="row">
       <app-product-item
         *ngFor="let product of products | async"
@@ -8,4 +11,4 @@
       >
       </app-product-item>
     </div>
-</section>
+</div>

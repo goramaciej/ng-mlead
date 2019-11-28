@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument
 } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { take } from 'rxjs/operators';
 
 import { Product } from './../shared/product.model';
-import { FilterModel } from './../shared/filter.model';
 import { FilterService } from './../../services/filter.service';
 
 @Component({
@@ -19,27 +14,23 @@ import { FilterService } from './../../services/filter.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   private productsCollection: AngularFirestoreCollection<Product>;
-  //productsDoc: AngularFirestoreDocument<Product>;
-  products: any;
-  private currentFilter: FilterModel;
   private subscription: any;
+  products: any;
+  productsLength = 1;
 
   constructor(private fireStore: AngularFirestore, private filter: FilterService) {}
 
   ngOnInit() {
     // preloader
     this.productsCollection = this.fireStore.collection('products');
-
     this.subscription = this.filter.getFilter().subscribe(
       res => {
         this.processData();
-        //console.table(res);
       }
     );
-    //
   }
 
   processData() {
@@ -49,9 +40,9 @@ export class ProductListComponent implements OnInit {
         const id = item.payload.doc.id;
         return { id, productData };
       });
-      const filteredArr = this.filter.filterProducts(mappedArr);
-
-      return this.sortArray(filteredArr, 'name');
+      const filteredArr = this.filter.filterProducts( mappedArr );
+      this.productsLength = filteredArr.length;
+      return this.sortArray(filteredArr, this.filter.getSortingMethod());
     });
   }
   sortArray(arr, sortType: string) {
@@ -63,5 +54,9 @@ export class ProductListComponent implements OnInit {
       default: // by default sort by name
           return arr.sort((a, b) => (a.productData.name > b.productData.name) ? 1 : -1);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
