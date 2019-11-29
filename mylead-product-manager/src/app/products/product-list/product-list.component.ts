@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { Product } from './../shared/product.model';
 import { FilterService } from './../../services/filter.service';
+import { ProductAddRemoveEdit } from './../../services/product-add-remove-edit.service'
 
 @Component({
   selector: 'app-product-list',
@@ -21,7 +22,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
   products: any;
   productsLength = 1;
 
-  constructor(private fireStore: AngularFirestore, private filter: FilterService) {}
+  constructor(private fireStore: AngularFirestore, private filter: FilterService,
+    private productService: ProductAddRemoveEdit) {}
+
+  addNewProduct() {
+    this.productService.addNewProduct();
+  }
 
   ngOnInit() {
     // preloader

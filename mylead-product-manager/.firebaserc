@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ng-mlead"
+  },
+  "targets": {
+    "ng-mylead-products": {
+      "hosting": {
+        "mylead-product-manager": [
+          "ng-mylead-products"
+        ]
+      }
+    }
+  }
+}

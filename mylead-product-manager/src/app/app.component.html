@@ -1,12 +1,10 @@
-<!-- <app-navbar></app-navbar> -->
-
-<button (click)="addNewProduct()">AddProduct</button>
+<app-navbar></app-navbar>
 
 <app-product-list></app-product-list>
 
 <app-create-edit-product
   *ngIf="newEditProduct"
   [product]="newEditProduct"
-  (commit)="addCommited($event)"
-  (abandon)="addAbandoned($event)"
 ></app-create-edit-product>
+<!-- (commit)="addCommited($event)"
+  (abandon)="addAbandoned($event)" -->

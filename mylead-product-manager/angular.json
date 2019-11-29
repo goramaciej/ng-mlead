@@ -123,8 +123,13 @@
               "devServerTarget": "mylead-product-manager:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "mylead-product-manager"
 }

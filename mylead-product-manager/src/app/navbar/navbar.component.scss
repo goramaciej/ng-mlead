@@ -2,22 +2,48 @@
   border-radius: 0 !important;
 }
 form {
+  width: 100%;
   display: flex;
-  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   padding: 5px;
-}
-select{
-  padding: 5px;
-  width: 120px;
+
+  @media (min-width: 820px){
+    flex-flow: row nowrap;
+  }
 }
 input {
-  padding: 5px;
+  padding: 0 5px;
 }
 label {
   color: white;
-  width: 300px;
-  margin: 0 10px 0 30px;
+  text-align: right;
+  width: 100px;
+  margin: 0 6px 0 0;
 }
-.price-input{
-  width: 300px;
+#search > input{
+  flex: 1 1 300px;
+
 }
+#sortSelect{
+  display: flex;
+
+  label {
+    width: 120px;
+  }
+  select{
+    padding: 0 5px;
+    width: 150px;
+    height: 29px;
+  }
+}
+#prices{
+  display: flex;
+  label{
+    width: 120px;
+  }
+  .price-input{
+    width: 100px;
+  }
+}
+

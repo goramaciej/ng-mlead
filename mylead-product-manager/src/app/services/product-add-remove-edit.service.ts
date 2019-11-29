@@ -10,8 +10,6 @@ import {
 } from 'angularfire2/firestore';
 
 
-
-
 @Injectable()
 export class ProductAddRemoveEdit {
   productsCollection: AngularFirestoreCollection<Product>;
@@ -34,9 +32,14 @@ export class ProductAddRemoveEdit {
     });
   }
   saveEditedProduct(product: Product) {
-    this.productsCollection.doc(product.id.toString()).set(product).then( ()=>{
-      this.resetProduct();
-    })
+    const ob = {
+      name: product.name,
+      id: product.id,
+      description: product.description,
+      imageURL: product.imageURL,
+      price: product.price
+    };
+    this.productsCollection.doc(product.id.toString()).set(ob).then( () => this.resetProduct());
   }
   abandonEdit() {
     this.productTracker.next(null);

@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.filter.getFilter().subscribe( res => {
-      console.log(res);
+      // console.log(res);
     });
   }
 

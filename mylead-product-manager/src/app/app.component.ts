@@ -35,34 +35,16 @@ export class AppComponent {
   ngOnInit() {
     this.subscription = this.productService.getProduct().subscribe( res => {
       this.newEditProduct = res;
-      if (res){
+      if (res) {
         this.blockScroll();
-      }else{
+      } else {
         this.unBlockScroll();
       }
     });
   }
-  addNewProduct(){
-    console.log('addNewProduct');
+  addNewProduct() {
     this.productService.addNewProduct();
   }
-  addCommited(ev) {
-    // const per = this.productsCollection.doc(this.newEditProduct.id.toString()).set({
-    //   name: this.newEditProduct.name,
-    //   id: this.newEditProduct.id,
-    //   description: this.newEditProduct.description,
-    //   imageURL: this.newEditProduct.imageURL,
-    //   price: this.newEditProduct.price,
-    // }).then( () => {
-    //   this.newEditProduct = null;
-    //   this.unBlockScroll();
-    // });
-  }
-  /*addAbandoned(ev) {
-    this.newEditProduct = null;
-    this.unBlockScroll();
-  }*/
-
   blockScroll() {
     console.log('blockScroll');
     const scrollY = document.documentElement.style.getPropertyValue('--scroll-y');

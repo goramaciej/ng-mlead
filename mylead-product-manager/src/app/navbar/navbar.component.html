@@ -2,32 +2,43 @@
 
       <!-- <a class="navbar-brand" href="#">Sklep</a> -->
   <form>
-      <!-- <label for="searchInput">Wyszukaj:</label> -->
-      <input type="text" name="searchString" id="searchInput" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
+      <div id="search">
+        <input type="text" name="searchString" id="searchInput" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
+      </div>
 
-      <label for="sortMethod">Sortuj według:</label>
-      <select class="form-control" id="sortMethod" (change)="onSelectChange($event.target.value)">
-          <option value="name">Nazwa</option>
-          <option value="price">Cena rosnąco</option>
-          <option value="price-desc">Cena malejąca</option>
-      </select>
-
-      <label for="minPrice">Zakres ceny:</label>
-      <input type="number" class="price-input" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)">
-      <input type="number" class="price-input" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)">
-
-      <!-- <button class="navbar-toggler" type="button">
-        <span class="oi oi-menu"></span> Menu
-      </button> -->
-
-      <!-- <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-
-          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-      </div> -->
+      <div id="sortSelect">
+          <label for="sortMethod">Sortuj według:</label>
+          <select class="form-control" id="sortMethod" (change)="onSelectChange($event.target.value)">
+              <option value="name">Nazwa</option>
+              <option value="price">Cena rosnąco</option>
+              <option value="price-desc">Cena malejąca</option>
+          </select>
+      </div>
+      <div id="prices">
+          <label for="minPrice">Zakres ceny:</label>
+          <input type="number" class="price-input" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)">
+          <input type="number" class="price-input" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)">
+      </div>
     </form>
   </nav>
+
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light">
+  <form>
+      <input type="text" name="searchString" id="searchInput" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
+
+      <div id="sortSelect">
+          <label for="sortMethod">Sortuj według:</label>
+          <select class="form-control" id="sortMethod" (change)="onSelectChange($event.target.value)">
+              <option value="name">Nazwa</option>
+              <option value="price">Cena rosnąco</option>
+              <option value="price-desc">Cena malejąca</option>
+          </select>
+      </div>
+      <div id="prices">
+          <label for="minPrice">Zakres ceny:</label>
+          <input type="number" class="price-input" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)">
+          <input type="number" class="price-input" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)">
+      </div>
+    </form>
+  </nav> -->

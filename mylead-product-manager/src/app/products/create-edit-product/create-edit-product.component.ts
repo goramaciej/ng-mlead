@@ -26,45 +26,16 @@ export class CreateEditProductComponent implements OnInit {
   constructor(private productService: ProductAddRemoveEdit) {
 
   }
-  // @Output()
-  // abandon: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  // @Output()
-  // commit: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  // id: number;
-  // name: string;
-  // description: string;
-  // price: number;
-  // imageURL: string;
 
   ngOnInit() {
-    this.product = this.productService.getProductValue();
+    // this.product = this.productService.getProductValue();
   }
 
   commitAdd(event) {
-    this.productService.saveEditedProduct(this.product as Product);
-
-    // console.table(this.product['name']);
-    // this.commit.emit(true);
-      // const newProduct = new Observable<Product>();
-      // const per = this.productsCollection.add(newProduct)
-      //   .then(() => console.log('product added'))
-      //   .catch(() => console.log('problem'))
-      //   .then(() => console.log(per));
-
-    //
-    // const per = this.productsCollection.doc('my-custom-id').set({name: this.name, description: this.description})
-
-    /*const newProduct = new Product();
-    const per = this.productsCollection.add(newProduct)
-      .then(() => console.log('product added'))
-      .catch(() => console.log('problem'))
-      .then(() => console.log(per));*/
+    this.productService.saveEditedProduct(this.product);
   }
 
-  abandonAdd(ev){
-    //this.abandon.emit(true);
+  abandonAdd(ev) {
     this.productService.abandonEdit();
   }
 
