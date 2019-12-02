@@ -10,9 +10,11 @@ import { FilterService } from './../services/filter.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
+  minPrice: number;
+  maxPrice: number;
+
   @Input()
   filterObject: FilterModel;
-
   currentFilter: FilterModel;
 
   subscription: any;
@@ -33,10 +35,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.filter.filterSetFilterString(searchValue);
   }
   onMinPrice(value: number) {
+    console.log(value < 1);
     this.filter.setPriceMin(value);
   }
   onMaxPrice(value: number) {
-    this.filter.setPriceMax(value);
+    let val = value;
+    this.filter.setPriceMax(val);
   }
 
   ngOnDestroy(): void {

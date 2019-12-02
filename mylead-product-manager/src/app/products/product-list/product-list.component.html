@@ -1,9 +1,10 @@
 <div class="container reset-padding">
-    <button (click)="addNewProduct()">AddProduct</button>
+
     <div class="row" *ngIf="productsLength < 1">
       <h5>Brak produktów spełniających określone kryteria</h5>
     </div>
     <div class="row">
+        <div (click)="addNewProduct()" class="admin-button text-center py-1">Dodaj produkt</div>
       <app-product-item
         *ngFor="let product of products | async"
         class="col-sm-6 col-md-4 col-lg-3 p-0"

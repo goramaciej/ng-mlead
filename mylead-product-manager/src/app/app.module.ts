@@ -12,9 +12,14 @@ import { ProductItemComponent } from './products/product-item/product-item.compo
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 
+// Slider:
+import { Ng5SliderModule } from 'ng5-slider';
+
 // Services:
 import { FilterService } from './services/filter.service';
 import { ProductAddRemoveEdit } from './services/product-add-remove-edit.service';
+import { MSliderComponent } from './m-slider/m-slider.component';
+
 
 
 const firebaseConfig = {
@@ -35,13 +40,15 @@ const firebaseConfig = {
     ProductItemComponent,
     NavbarComponent,
     ProductListComponent,
+    MSliderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    Ng5SliderModule
   ],
   providers: [
     FilterService,

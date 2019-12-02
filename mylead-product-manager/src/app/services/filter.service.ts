@@ -8,6 +8,9 @@ export class FilterService {
   private initialFilter: FilterModel = new FilterModel();
   private filterTracker = new BehaviorSubject<FilterModel>(this.initialFilter);
 
+  lowestPrice: number = 10000;
+  highestPrice: number = 0;
+
   constructor() { }
 
   /** Allows subscription to the behavior subject as an observable */
@@ -50,7 +53,7 @@ export class FilterService {
     ftValue.sortBy = value;
     this.filterTracker.next(ftValue);
   }
-  getSortingMethod():string{
+  getSortingMethod(): string{
     return this.filterTracker.value.sortBy;
   }
   setPriceMin(value) {
@@ -62,6 +65,17 @@ export class FilterService {
     const ftValue = this.filterTracker.value;
     ftValue.priceMax = value;
     this.filterTracker.next(ftValue);
+  }
+
+  productPrice(value: number){
+    // get product price to set lowest and highest prices
+    if (value > this.highestPrice) {
+      this.highestPrice = value;
+    }
+    if (value < this.lowestPrice) {
+      this.lowestPrice = value;
+    }
+    console.log(`min: ${this.lowestPrice} :: max: ${this.highestPrice}`);
   }
 
   resetFilter(): void {

@@ -2,11 +2,11 @@
 
       <!-- <a class="navbar-brand" href="#">Sklep</a> -->
   <form>
-      <div id="search">
+      <div id="search" class="col-12 col-md-6 bt-margin-1rem">
         <input type="text" name="searchString" id="searchInput" placeholder="Wyszukaj" (input)="onSearchChange($event.target.value)">
       </div>
 
-      <div id="sortSelect">
+      <div id="sortSelect" class="col-12 col-md-6 bt-margin-1rem">
           <label for="sortMethod">Sortuj według:</label>
           <select class="form-control" id="sortMethod" (change)="onSelectChange($event.target.value)">
               <option value="name">Nazwa</option>
@@ -14,10 +14,13 @@
               <option value="price-desc">Cena malejąca</option>
           </select>
       </div>
-      <div id="prices">
+      <!-- <div id="prices">
           <label for="minPrice">Zakres ceny:</label>
-          <input type="number" class="price-input" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)">
-          <input type="number" class="price-input" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)">
+          <input type="number" min="0" class="price-input" [(ngModel)]="minPrice" name="minPrice" id="minPrice" placeholder="od" (input)="onMinPrice($event.target.value)" (blur)="onMinPrice($event.target.value)">
+          <input type="number" min="0" class="price-input" [(ngModel)]="maxPrice" name="maxPrice" id="maxPrice" placeholder="do" (input)="onMaxPrice($event.target.value)" (blur)="onMaxPrice($event.target.value)">
+      </div> -->
+      <div class="col-12">
+        <app-m-slider></app-m-slider>
       </div>
     </form>
   </nav>

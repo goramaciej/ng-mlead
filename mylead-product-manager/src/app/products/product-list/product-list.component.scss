@@ -2,4 +2,25 @@ h5{
   text-align: center;
   width: 100%;
   color: #fc3a5a;
+  margin-top: 1rem;
+}
+.row {
+  width: 100%;
+  margin: 0;
+}
+.admin-button{
+  background-color: #fc3a5a;
+  border: 1px solid #fc3a5a;
+  color: white;
+  width: 100%;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  &:hover{
+    color: #fc3a5a;
+    background-color: white;
+  }
 }

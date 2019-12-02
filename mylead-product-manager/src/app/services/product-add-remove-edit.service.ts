@@ -19,7 +19,6 @@ export class ProductAddRemoveEdit {
 
   currentProductToAddOrEdit: Product;
 
-
   constructor(private fireStore: AngularFirestore) {
     this.productsCollection = this.fireStore.collection('products');
   }

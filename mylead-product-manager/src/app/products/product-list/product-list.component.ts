@@ -44,6 +44,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       const mappedArr =  actions.map( item => {
         const productData = item.payload.doc.data() as Product;
         const id = item.payload.doc.id;
+        this.filter.productPrice(productData.price);
         return { id, productData };
       });
       const filteredArr = this.filter.filterProducts( mappedArr );
