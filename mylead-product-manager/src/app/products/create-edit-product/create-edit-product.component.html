@@ -1,4 +1,5 @@
-<section class="add-edit-product">
+<section class="add-edit-product ">
+  <div class="container">
 <form>
     <p>Nazwa produktu:</p>
     <input type="text" [(ngModel)]="product && product.name" name="name" placeholder="Nazwa produktu">
@@ -17,4 +18,5 @@
     <button class="admin-button" (click)="abandonAdd($event)">Anuluj</button>
     <button class="admin-button" (click)="commitAdd($event)">Zapisz</button>
   </div>
+</div>
 </section>

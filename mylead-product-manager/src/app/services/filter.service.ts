@@ -75,7 +75,7 @@ export class FilterService {
     if (value < this.lowestPrice) {
       this.lowestPrice = value;
     }
-    console.log(`min: ${this.lowestPrice} :: max: ${this.highestPrice}`);
+    // console.log(`min: ${this.lowestPrice} :: max: ${this.highestPrice}`);
   }
 
   resetFilter(): void {

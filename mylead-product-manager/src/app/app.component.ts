@@ -1,13 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { ReactiveFormsModule } from '@angular/forms';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument
-} from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
-//import { take, map } from 'rxjs/operators';
 import { ProductAddRemoveEdit } from './services/product-add-remove-edit.service';
 
 import { Product } from './products/shared/product.model';
@@ -20,12 +11,7 @@ import { Product } from './products/shared/product.model';
 
 export class AppComponent {
   title = 'mylead-product-manager';
-  productsCollection: AngularFirestoreCollection<Product>;
-  productsDoc: AngularFirestoreDocument<Product>;
-  selectedProduct: Observable<Product>;
-
   newEditProduct: Product = null;
-
   subscription: any;
 
   constructor(private productService: ProductAddRemoveEdit) {

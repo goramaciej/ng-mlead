@@ -2,9 +2,6 @@
 
 <app-product-list></app-product-list>
 
-<app-create-edit-product
-  *ngIf="newEditProduct"
-  [product]="newEditProduct"
-></app-create-edit-product>
+<app-create-edit-product *ngIf="newEditProduct"></app-create-edit-product>
 <!-- (commit)="addCommited($event)"
   (abandon)="addAbandoned($event)" -->

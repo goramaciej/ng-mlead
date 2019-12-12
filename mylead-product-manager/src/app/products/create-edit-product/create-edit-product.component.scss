@@ -1,16 +1,23 @@
+.add-edit-wrapper{
+  width: 100%;
+}
+
 .add-edit-product{
   box-sizing: border-box;
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   left: 0;
   bottom: 0;
   overflow-y: auto;
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   height: auto;
   padding: 20px;
   left: 0;
   top: 0;
+  z-index: 100;
 
   p {
     font-size: 13px;
@@ -21,6 +28,7 @@
     }
   }
 }
+
 input, textarea {
   display:block;
   width: 100%;
